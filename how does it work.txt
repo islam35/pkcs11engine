@@ -22,3 +22,20 @@ Digital Signature:  The client sends a "Certificate Verify" message that contain
 Certificate Chain:  The server maintains a list of trusted Client Authorities (CAs), and this list determines which certificates the server will accept.  The server will use the public key from the CA certificate (which it has in its list of trusted CAs) to validate the CA's digital signature on the certificate being presented.  If the message digest has changed or if the public key does not correspond to the CA's private key used to sign the certificate, the verification fails and the handshake terminates.
 Expiration Date and Validity Period:  The server compares the current date to the validity period listed in the certificate.  If the expiration date has not passed and the current date is within the period, then this check succeeds.  If it is not, then the verification fails and the handshake terminates.
 Certificate Revocation Status:  The server compares the client certificate to the list of revoked certificates on the system.  If the client certificate is on the list, the verification fails and the handshake terminates.
+
+
+These codes show how to get a certificate and key from smart card.
+This code blog is used to get the information(public key and certificate) from smart card.
+Default password is "00000000"
+Two third party dlls are using in SmartCardProject.cpp. "pkcs11engine.dll" and "pkcs11MiddlewareLibrary.dll".
+pkcs11engine.dll for the "pkcs11 engine".
+pkcs11MiddlewareLibrary.dll for the driver and "pkcs11 engine".
+-pkcs11engine.dll is automatically installed in the directory where the program is installed. Embedded pkcs11.dll and External pkcs11.dll are used to get information from the smart card.
+    -Certificate
+    -Public Key infos
+ -pkcs11MiddlewareLibrary.dll may come automatically when the smart card is inserted or it may be distributed by the card issuer. This dll is used to connection to the smart card.
+    -Serial Number
+    -Token Infos
+    -Function Lists etc..
+cert_info.certificate_ variable is for smart card certificate
+privateKey_ is key infos
