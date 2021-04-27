@@ -1,5 +1,5 @@
 /*
-
+islam turkoz
 These codes show how to get a certificate and key from smart card.
 
 This code blog is used to get the information(public key and certificate) from smart card.
